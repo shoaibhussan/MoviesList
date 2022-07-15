@@ -7,6 +7,20 @@
 
 import UIKit
 
-class MovieObject: NSObject {
+struct MovieObject: Codable {
 
+    let adult : Bool?
+    let backdrop_path : String?
+    let id : Int?
+    let original_title : String?
+    let overview : String?
+    let popularity : Double?
+    let poster_path : String?
+    let release_date : String?
+    let title : String?
+    var video : Bool?
+}
+
+struct MovieResponseResult : Codable{
+    let results : [MovieObject]?
 }

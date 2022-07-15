@@ -9,51 +9,56 @@
 import UIKit
 import YoutubeKit
 
-final class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+final class PlayerViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
 
+    //************************************************//
+    // MARK:- Creating properties
+    //************************************************//
+    
     private var player: YTSwiftyPlayer!
-
     private let youtubeAPI = YoutubeAPI.shared
+    var currentPlayyingId = ""
+    var tableData = [MovieVideoViewModel]()
+    var currentPlayingIndex = 0
+    var isRepeatingEnabled = false
+
+    //************************************************//
+    // MARK:- Defining outlets
+    //************************************************//
     
     @IBOutlet weak var pContainerView: UIView!
     @IBOutlet weak var pTimerLabel: UILabel!
     @IBOutlet weak var pDuratioinLabel: UILabel!
     @IBOutlet weak var pIconView: UIImageView!
-    
     @IBOutlet weak var pTableView: UITableView!
-
-
     @IBOutlet weak var pSlider: UISlider!
-
-    var currentPlayyingId = ""
-  //  var tableData = ["22XrhMfpqKI","unbNp5a8oF0" , "4GzxPw6-rLM", "OCM2udWCZFw", "aefHHOUM_ds","pet3XbSHSaM"]
-    var tableData = ["uVrlq2tT90U","Ot3hr4JkDaA" , "M30iVU51U6c", "9-0WZDbA9m0", "aefHHOUM_ds","pet3XbSHSaM"]
-    var currentPlayingIndex = 0
-    
-    var isRepeatingEnabled = false
     @IBOutlet weak var pHeightConst: NSLayoutConstraint!
- //   override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .landscapeLeft }
 
-
+    //************************************************//
+    // MARK:- View life Cycle
+    //************************************************//
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Create a new player
-       
+ 
         pSlider.addTarget(self, action: #selector(onSliderValChanged(slider:event:)), for: .valueChanged)
         self.playFileUpdated()
-
-    //    fetchVideoList()
-        
-        self.pTableView.register(UINib(nibName: "tableCell", bundle: nil), forCellReuseIdentifier: "tableCell")
+        self.pTableView.register(UINib(nibName: "VideoTableCell", bundle: nil), forCellReuseIdentifier: "VideoTableCell")
         
         NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
 
     }
     
+    //************************************************//
+    // MARK:- Custom methods, Actions and selectors.
+    //************************************************//
+    
     @objc func orientationChanged() {
         self.updateFrameOfPlayer(updateOrientation: false)
     }
     
+    //************************************************//
+
     @objc func onSliderValChanged(slider: UISlider, event: UIEvent) {
         if let touchEvent = event.allTouches?.first {
             switch touchEvent.phase {
@@ -73,6 +78,8 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
         }
     }
 
+    //************************************************//
+
     @IBAction func playPausePressed(_ sender: Any) {
         if player.playerState == .playing
         {
@@ -84,29 +91,7 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
     }
     
     //************************************************//
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
-    }
-    
-    //************************************************//
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let  countryCell : tableCell = self.pTableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! tableCell
-        countryCell.pResultLabel.text = "Video # \(indexPath.row + 1) - \(tableData[indexPath.row])"
-        return countryCell
-    }
-    
-    //************************************************//
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: true)
-        currentPlayingIndex = indexPath.row
-        self.playFileUpdated()
-    }
-    
+
     @IBAction func underConstructionPressed(_ sender: UIButton) {
         
         if sender.tag == 1 {
@@ -159,9 +144,10 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
             self.playFileUpdated()
             self.showErrorAlertWithError(errorMessage: "All videdos are shuffled")
         }
-      //  self.showUnderConstructionAlert()
     }
-    
+
+    //************************************************//
+
     func playFileUpdated(){
     
         if !(currentPlayingIndex < tableData.count) {
@@ -175,7 +161,7 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
             pDuratioinLabel.text = "00:00"
         }
         
-        currentPlayyingId = tableData[currentPlayingIndex]
+        currentPlayyingId = tableData[currentPlayingIndex].key!
 
         player = YTSwiftyPlayer(
             frame: pContainerView.frame,
@@ -190,12 +176,8 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
             ])
         player.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height:300)
         pContainerView.addSubview(player)
-    //    self.view.addSubview(player)
-       // view = player
         player.delegate = self
-
-        // Load video player
-        let playerPath = Bundle(for: ViewController.self).path(forResource: "player", ofType: "html")!
+       let playerPath = Bundle(for: PlayerViewController.self).path(forResource: "player", ofType: "html")!
         let htmlString = try! String(contentsOfFile: playerPath, encoding: .utf8)
         player.loadPlayerHTML(htmlString)
         
@@ -203,11 +185,14 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
 
     }
     
+    //************************************************//
 
     @IBAction func fullScreenPressed(_ sender: Any) {
         self.updateFrameOfPlayer(updateOrientation: true)
     }
     
+    //************************************************//
+
     func updateFrameOfPlayer(updateOrientation:Bool){
         
         let orientation =  UIDevice.current.orientation
@@ -244,6 +229,8 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
       
     }
     
+    //************************************************//
+
     func animateChanges(){
         UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
@@ -251,6 +238,8 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
                 self.player.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height:self.pContainerView.frame.size.height)
         })
     }
+
+    //************************************************//
 
     private func fetchVideoList() {
         let request = VideoListRequest(part: [.id, .snippet, .contentDetails], filter: .chart)
@@ -265,56 +254,73 @@ final class ViewController: UIViewController , UITableViewDelegate , UITableView
             }
         }
     }
+    
+    //************************************************//
+    // MARK:- UITableview delegate and datasource
+    //************************************************//
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
+    
+    //************************************************//
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let countryCell : VideoTableCell = self.pTableView.dequeueReusableCell(withIdentifier: "VideoTableCell", for: indexPath) as! VideoTableCell
+        countryCell.pResultLabel.text = tableData[indexPath.row].name
+        return countryCell
+    }
+    
+    //************************************************//
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: true)
+        currentPlayingIndex = indexPath.row
+        self.playFileUpdated()
+    }
+    
+    //************************************************//
+
 }
 
-extension ViewController: YTSwiftyPlayerDelegate {
+//************************************************//
+// MARK:- Video player delegate and callbacks.
+//************************************************//
+
+extension PlayerViewController: YTSwiftyPlayerDelegate {
     
+    //************************************************//
+
     func playerReady(_ player: YTSwiftyPlayer) {
         print(#function)
-        // Player API is available after loading a video.
-        // e.g. player.mute()
         pSlider.isHidden = false
     }
     
+    //************************************************//
+
     func player(_ player: YTSwiftyPlayer, didUpdateCurrentTime currentTime: Double) {
-        //print("\(#function): \(currentTime)")
-       // print("current time is \(currentTime)")
-
-       
+  
         let duration: TimeInterval = currentTime // 2 minutes, 30 seconds0.
-
-//        let seconds: Int = Int(duration) % 60
-//        let minutes: Int = Int(duration) / 60
-//        let hours : Int = Int(duration) / 3600
-//
-//        let formattedDuration = String(format: "%02d:%02d:%02d", hours, minutes , seconds)
-        
         let (hours, minutes, seconds) = self.secondsToHoursMinutesSeconds(Int(currentTime))
-
-
         pTimerLabel.text = String(format: "%02d:%02d:%02d", hours, minutes , seconds)
-        
-        
         let totalDuration: TimeInterval = player.duration! // 2 minutes, 30 seconds
-
-//        let totalseconds: Int = Int(totalDuration) % 60
-//        let totalminutes: Int = Int(totalDuration) / 60
-//        let totalhours : Int = Int(totalDuration) / 3600
-        
         let (totalhours, totalminutes, totalseconds) = self.secondsToHoursMinutesSeconds(Int(totalDuration))
         let formattedTotalDuration = String(format: "%02d:%02d:%02d", totalhours, totalminutes , totalseconds)
         pDuratioinLabel.text = formattedTotalDuration
-
-        //pTimerLabel.text = formatter.string(for: duration)
         pSlider.value = Float(currentTime)
         pSlider.maximumValue = Float(Double(player.duration ?? 0.0))
-
     }
     
+    //************************************************//
+
     func secondsToHoursMinutesSeconds(_ seconds: Int) -> (Int, Int, Int) {
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
+    //************************************************//
+
     func player(_ player: YTSwiftyPlayer, didChangeState state: YTSwiftyPlayerState) {
         print("\(#function): \(state)")
         
@@ -325,48 +331,46 @@ extension ViewController: YTSwiftyPlayerDelegate {
         else{
             pIconView.image = UIImage(named: "play")
         }
-        
     }
-    
+
+    //************************************************//
+
     func player(_ player: YTSwiftyPlayer, didChangePlaybackRate playbackRate: Double) {
         print("\(#function): \(playbackRate)")
     }
     
+    //************************************************//
+
     func player(_ player: YTSwiftyPlayer, didReceiveError error: YTSwiftyPlayerError) {
         print("\(#function): \(error)")
     }
     
+    //************************************************//
+
     func player(_ player: YTSwiftyPlayer, didChangeQuality quality: YTSwiftyVideoQuality) {
         print("\(#function): \(quality)")
     }
     
+    //************************************************//
+
     func apiDidChange(_ player: YTSwiftyPlayer) {
         print(#function)
     }
     
+    //************************************************//
+
     func youtubeIframeAPIReady(_ player: YTSwiftyPlayer) {
         print(#function)
     }
     
+    //************************************************//
+
     func youtubeIframeAPIFailedToLoad(_ player: YTSwiftyPlayer) {
         print(#function)
     }
-}
-
-
-extension UIViewController{
-
-    func showErrorAlertWithError(errorMessage:String) {
-        
-        let alertController = UIAlertController(title: "", message: errorMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-    }
     
-    func showUnderConstructionAlert(){
-        self.showErrorAlertWithError(errorMessage: "This module is under construction")
-    }
+    //************************************************//
+
 }
 
 extension Array {

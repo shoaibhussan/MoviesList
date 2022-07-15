@@ -8,13 +8,12 @@
 
 import UIKit
 
-class FilterCollectionCell: UICollectionViewCell {
+class GenresCollectionCell: UICollectionViewCell {
 
     //************************************************//
     // MARK:- Creating Outlets.
     //************************************************//
     
-    @IBOutlet weak var pBadgeLbl: UILabel!
     @IBOutlet weak var pMainView: UIView!
     @IBOutlet weak var pTitleLbl: UILabel!
     
@@ -26,32 +25,39 @@ class FilterCollectionCell: UICollectionViewCell {
         super.awakeFromNib()
      
         pMainView.clipsToBounds = true
-        pMainView.layer.cornerRadius = 7.0
-        pMainView.layer.borderWidth = 1.0
-        
-        pBadgeLbl.clipsToBounds = true
-        pBadgeLbl.layer.cornerRadius = pBadgeLbl.frame.size.width / 2.0
+        pMainView.layer.cornerRadius = 15.0
     }
     
     //************************************************//
     // MARK:- Custom methods, actions and selectors.
     //************************************************//
     
-    func setDataModelForView(model : FilterObject)
+    func setDataModelForView(model : Genres)
     {
-        let badge : Int = Int(model.badgeValue) ?? 0
-        if badge > 99 {
-            pBadgeLbl.text = "99+"
-        }
-        else{
-            pBadgeLbl.text = model.badgeValue
-        }
-        pTitleLbl.text = model.titleString.capitalized
-        pBadgeLbl.backgroundColor = model.badgeColor
-        let borderColor = model.isSelected ? model.badgeColor : UIColor.getLightWhite()
-        pMainView.layer.borderColor = borderColor.cgColor
+      
+        pTitleLbl.text = model.name?.capitalized
+        pMainView.backgroundColor = UIColor.random()
     }
 
     //************************************************//
 
+}
+
+
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(
+           red:   .random(),
+           green: .random(),
+           blue:  .random(),
+            alpha: 1.0
+        )
+    }
+}
+//************************************************//
+
+extension CGFloat {
+    static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
 }

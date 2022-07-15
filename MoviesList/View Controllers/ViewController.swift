@@ -7,12 +7,14 @@
 
 import UIKit
 import MBProgressHUD
-class ViewController: UIViewController {
+class ViewController: UIViewController{
 
     //************************************************//
     // MARK:- Defining outlets
     //************************************************//
-    
+  
+    @IBOutlet weak var pTableView: UITableView!
+
     //************************************************//
     // MARK:- Creating properties
     //************************************************//
@@ -24,14 +26,27 @@ class ViewController: UIViewController {
     //************************************************//
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        self.getDataFromAPI()
+        
+        self.configurViewLayoout()
     }
     
     //************************************************//
     // MARK:- Custom methods, actions and selectors.
     //************************************************//
-    
+ 
+    func configurViewLayoout(){
+       
+        self.title = "Watch"
+        self.pTableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
+        let searchBtn : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(self.searchFunction))
+        self.navigationItem.rightBarButtonItem = searchBtn
+        self.getDataFromAPI()
+    }
+
+    //************************************************//
+
     func getDataFromAPI(){
        
         self.showCustomLoader()
@@ -43,10 +58,53 @@ class ViewController: UIViewController {
             else{
                 self.arrOfMovies = objects?.map({ return MovieObjectViewModel(model: $0)
                 }) ?? []
+                self.pTableView.reloadData()
             }
         }
     }
+    
+    //************************************************//
 
+    @objc func searchFunction(){
+        let vcObject = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
+        self.navigationController?.pushViewController(vcObject!, animated: true)
+    }
+
+    //************************************************//
+
+}
+
+//************************************************//
+// MARK:- UITableview delegate and datasource
+//************************************************//
+
+extension ViewController : UITableViewDelegate , UITableViewDataSource{
+    
+    //************************************************//
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+        return arrOfMovies.count
+    }
+    
+    //************************************************//
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let  movieCell : HomeTableViewCell = self.pTableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+        movieCell.setDataModelView(model: arrOfMovies[indexPath.row])
+        return movieCell
+    }
+    
+    //************************************************//
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        let vcObject = self.storyboard?.instantiateViewController(withIdentifier: "MovieDetailsVC") as! MovieDetailsVC
+        vcObject.selectedMovieId = arrOfMovies[indexPath.row].id
+        self.navigationController?.pushViewController(vcObject, animated: true)
+    }
 }
 
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class tableCell: UITableViewCell {
+class VideoTableCell: UITableViewCell {
 
     @IBOutlet weak var pResultLabel: UILabel!
 
