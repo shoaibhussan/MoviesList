@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="filter" id="gTV-IL-0wX" customClass="FilterCollectionCell" customModule="DrIQ" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="236" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="236" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFo-GJ-u5C">
+                        <rect key="frame" x="0.0" y="0.0" width="236" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="67+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyY-UJ-qmi">
+                                <rect key="frame" x="8" y="6" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="c0h-Eo-GUp"/>
+                                    <constraint firstAttribute="width" constant="28" id="sX1-DI-Nu1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTI-Qq-eSs">
+                                <rect key="frame" x="44" y="9.5" width="184" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="YvF-QR-ndu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FTI-Qq-eSs" secondAttribute="trailing" constant="8" id="3rX-co-TcQ"/>
+                            <constraint firstItem="IyY-UJ-qmi" firstAttribute="centerY" secondItem="qFo-GJ-u5C" secondAttribute="centerY" id="8fo-rf-CzO"/>
+                            <constraint firstItem="IyY-UJ-qmi" firstAttribute="leading" secondItem="qFo-GJ-u5C" secondAttribute="leading" constant="8" id="DdN-1y-3Tx"/>
+                            <constraint firstItem="FTI-Qq-eSs" firstAttribute="leading" secondItem="IyY-UJ-qmi" secondAttribute="trailing" constant="8" id="TFB-zr-LpW"/>
+                            <constraint firstItem="FTI-Qq-eSs" firstAttribute="centerY" secondItem="qFo-GJ-u5C" secondAttribute="centerY" id="kRf-bD-v9m"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="qFo-GJ-u5C" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4MZ-aR-a2K"/>
+                <constraint firstItem="qFo-GJ-u5C" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Zv6-SI-tbA"/>
+                <constraint firstAttribute="trailing" secondItem="qFo-GJ-u5C" secondAttribute="trailing" id="lqu-cn-akY"/>
+                <constraint firstAttribute="bottom" secondItem="qFo-GJ-u5C" secondAttribute="bottom" id="rFL-2v-v6P"/>
+            </constraints>
+            <size key="customSize" width="236" height="50"/>
+            <connections>
+                <outlet property="pBadgeLbl" destination="IyY-UJ-qmi" id="FN5-BY-5UU"/>
+                <outlet property="pMainView" destination="qFo-GJ-u5C" id="oXM-Jx-hwv"/>
+                <outlet property="pTitleLbl" destination="FTI-Qq-eSs" id="eee-3C-dOH"/>
+            </connections>
+            <point key="canvasLocation" x="256.52173913043481" y="112.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
