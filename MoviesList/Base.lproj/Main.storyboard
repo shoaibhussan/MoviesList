@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mKg-nn-Y0r">
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKg-nn-Y0r">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Fod-iA-T1T"/>
@@ -63,7 +63,31 @@
                                     <outlet property="delegate" destination="9qb-53-90b" id="syt-Zg-VXP"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-Tz-mFf">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ERp-6q-qDs">
+                                <rect key="frame" x="15" y="88" width="384" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="jpH-9S-08x">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cGk-K9-TV2">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1H2-nk-7sP">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9qb-53-90b" id="raX-qY-9XH"/>
+                                    <outlet property="delegate" destination="9qb-53-90b" id="fyx-yM-PNy"/>
+                                </connections>
+                            </collectionView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-Tz-mFf">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -76,15 +100,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NvC-Tz-mFf" firstAttribute="trailing" secondItem="HFn-Tn-sbR" secondAttribute="trailing" id="06L-8I-JbF"/>
+                            <constraint firstItem="ERp-6q-qDs" firstAttribute="top" secondItem="mKg-nn-Y0r" secondAttribute="bottom" id="3U9-tt-HsT"/>
                             <constraint firstItem="mKg-nn-Y0r" firstAttribute="leading" secondItem="HFn-Tn-sbR" secondAttribute="leading" id="9JU-Nl-ueC"/>
                             <constraint firstAttribute="bottom" secondItem="NvC-Tz-mFf" secondAttribute="bottom" id="J9H-dE-HZx"/>
                             <constraint firstItem="mKg-nn-Y0r" firstAttribute="top" secondItem="HFn-Tn-sbR" secondAttribute="top" id="Ot9-cI-hFf"/>
+                            <constraint firstItem="ERp-6q-qDs" firstAttribute="leading" secondItem="HFn-Tn-sbR" secondAttribute="leading" constant="15" id="Pky-SK-WeI"/>
                             <constraint firstItem="NvC-Tz-mFf" firstAttribute="top" secondItem="mKg-nn-Y0r" secondAttribute="bottom" id="SAO-qT-RMg"/>
                             <constraint firstItem="mKg-nn-Y0r" firstAttribute="trailing" secondItem="HFn-Tn-sbR" secondAttribute="trailing" id="WZ3-Kv-nnP"/>
+                            <constraint firstItem="HFn-Tn-sbR" firstAttribute="trailing" secondItem="ERp-6q-qDs" secondAttribute="trailing" constant="15" id="nga-v1-F0Q"/>
                             <constraint firstItem="NvC-Tz-mFf" firstAttribute="leading" secondItem="HFn-Tn-sbR" secondAttribute="leading" id="nuw-Zi-0KA"/>
+                            <constraint firstAttribute="bottom" secondItem="ERp-6q-qDs" secondAttribute="bottom" id="thF-hZ-3tL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pCollectionView" destination="ERp-6q-qDs" id="2dk-Zf-7SC"/>
                         <outlet property="pSearchBar" destination="mKg-nn-Y0r" id="xaS-ON-9LC"/>
                         <outlet property="pTableView" destination="NvC-Tz-mFf" id="VWd-FX-BPd"/>
                     </connections>

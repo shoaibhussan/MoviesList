@@ -24,6 +24,16 @@
 		480333ED2881543A003486EF /* SearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480333EB2881543A003486EF /* SearchTableCell.swift */; };
 		480333EE2881543A003486EF /* SearchTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 480333EC2881543A003486EF /* SearchTableCell.xib */; };
 		480333F028817511003486EF /* placeHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 480333EF28817511003486EF /* placeHolder.png */; };
+		48C428E32882A20000298BA7 /* SeacrchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C428E12882A20000298BA7 /* SeacrchCollectionViewCell.swift */; };
+		48C428E42882A20000298BA7 /* SeacrchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C428E22882A20000298BA7 /* SeacrchCollectionViewCell.xib */; };
+		48C428EA2882A9B600298BA7 /* SeatSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C428E62882A9B600298BA7 /* SeatSelectionViewController.swift */; };
+		48C428EB2882A9B600298BA7 /* SeatSelectDeatailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C428E72882A9B600298BA7 /* SeatSelectDeatailsViewController.xib */; };
+		48C428EC2882A9B600298BA7 /* SeatSelectDeatailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C428E82882A9B600298BA7 /* SeatSelectDeatailsViewController.swift */; };
+		48C428ED2882A9B600298BA7 /* SeatSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C428E92882A9B600298BA7 /* SeatSelectionViewController.xib */; };
+		48C428F22882A9FA00298BA7 /* SelectSeatDateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C428EE2882A9F900298BA7 /* SelectSeatDateCollectionViewCell.xib */; };
+		48C428F32882A9FA00298BA7 /* SelectSeatDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C428EF2882A9FA00298BA7 /* SelectSeatDateCollectionViewCell.swift */; };
+		48C428F42882A9FA00298BA7 /* SelectHallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C428F02882A9FA00298BA7 /* SelectHallCollectionViewCell.swift */; };
+		48C428F52882A9FA00298BA7 /* SelectHallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C428F12882A9FA00298BA7 /* SelectHallCollectionViewCell.xib */; };
 		48C9414F287FDA5500B9E577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C9414E287FDA5500B9E577 /* AppDelegate.swift */; };
 		48C94151287FDA5500B9E577 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C94150287FDA5500B9E577 /* SceneDelegate.swift */; };
 		48C94153287FDA5500B9E577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C94152287FDA5500B9E577 /* ViewController.swift */; };
@@ -59,6 +69,16 @@
 		480333EB2881543A003486EF /* SearchTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableCell.swift; sourceTree = "<group>"; };
 		480333EC2881543A003486EF /* SearchTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableCell.xib; sourceTree = "<group>"; };
 		480333EF28817511003486EF /* placeHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeHolder.png; sourceTree = "<group>"; };
+		48C428E12882A20000298BA7 /* SeacrchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeacrchCollectionViewCell.swift; sourceTree = "<group>"; };
+		48C428E22882A20000298BA7 /* SeacrchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeacrchCollectionViewCell.xib; sourceTree = "<group>"; };
+		48C428E62882A9B600298BA7 /* SeatSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatSelectionViewController.swift; sourceTree = "<group>"; };
+		48C428E72882A9B600298BA7 /* SeatSelectDeatailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeatSelectDeatailsViewController.xib; sourceTree = "<group>"; };
+		48C428E82882A9B600298BA7 /* SeatSelectDeatailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatSelectDeatailsViewController.swift; sourceTree = "<group>"; };
+		48C428E92882A9B600298BA7 /* SeatSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeatSelectionViewController.xib; sourceTree = "<group>"; };
+		48C428EE2882A9F900298BA7 /* SelectSeatDateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSeatDateCollectionViewCell.xib; sourceTree = "<group>"; };
+		48C428EF2882A9FA00298BA7 /* SelectSeatDateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSeatDateCollectionViewCell.swift; sourceTree = "<group>"; };
+		48C428F02882A9FA00298BA7 /* SelectHallCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectHallCollectionViewCell.swift; sourceTree = "<group>"; };
+		48C428F12882A9FA00298BA7 /* SelectHallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectHallCollectionViewCell.xib; sourceTree = "<group>"; };
 		48C9414B287FDA5500B9E577 /* MoviesList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48C9414E287FDA5500B9E577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48C94150287FDA5500B9E577 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +134,17 @@
 				480333D3288133E7003486EF /* Previous.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		48C428E52882A9AA00298BA7 /* SeatsModule */ = {
+			isa = PBXGroup;
+			children = (
+				48C428E82882A9B600298BA7 /* SeatSelectDeatailsViewController.swift */,
+				48C428E72882A9B600298BA7 /* SeatSelectDeatailsViewController.xib */,
+				48C428E62882A9B600298BA7 /* SeatSelectionViewController.swift */,
+				48C428E92882A9B600298BA7 /* SeatSelectionViewController.xib */,
+			);
+			path = SeatsModule;
 			sourceTree = "<group>";
 		};
 		48C94142287FDA5400B9E577 = {
@@ -191,6 +222,12 @@
 				480333E6288141B9003486EF /* GenresCollectionCell.xib */,
 				480333EB2881543A003486EF /* SearchTableCell.swift */,
 				480333EC2881543A003486EF /* SearchTableCell.xib */,
+				48C428E12882A20000298BA7 /* SeacrchCollectionViewCell.swift */,
+				48C428E22882A20000298BA7 /* SeacrchCollectionViewCell.xib */,
+				48C428F02882A9FA00298BA7 /* SelectHallCollectionViewCell.swift */,
+				48C428F12882A9FA00298BA7 /* SelectHallCollectionViewCell.xib */,
+				48C428EF2882A9FA00298BA7 /* SelectSeatDateCollectionViewCell.swift */,
+				48C428EE2882A9F900298BA7 /* SelectSeatDateCollectionViewCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -198,6 +235,7 @@
 		48C9417428801F0200B9E577 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				48C428E52882A9AA00298BA7 /* SeatsModule */,
 				48C94152287FDA5500B9E577 /* ViewController.swift */,
 				48C9417A2880380600B9E577 /* MovieDetailsVC.swift */,
 				480333DE28813461003486EF /* PlayerViewController.swift */,
@@ -274,6 +312,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48C428ED2882A9B600298BA7 /* SeatSelectionViewController.xib in Resources */,
+				48C428F22882A9FA00298BA7 /* SelectSeatDateCollectionViewCell.xib in Resources */,
 				48C9415B287FDA5900B9E577 /* LaunchScreen.storyboard in Resources */,
 				480333F028817511003486EF /* placeHolder.png in Resources */,
 				480333D4288133E7003486EF /* download.png in Resources */,
@@ -282,12 +322,15 @@
 				480333EE2881543A003486EF /* SearchTableCell.xib in Resources */,
 				480333E428813B66003486EF /* Main.storyboard in Resources */,
 				480333DD288133E7003486EF /* Previous.png in Resources */,
+				48C428EB2882A9B600298BA7 /* SeatSelectDeatailsViewController.xib in Resources */,
 				480333E328813791003486EF /* VideoTableCell.xib in Resources */,
 				480333E8288141B9003486EF /* GenresCollectionCell.xib in Resources */,
 				48C94158287FDA5900B9E577 /* Assets.xcassets in Resources */,
 				480333DB288133E7003486EF /* Next.png in Resources */,
 				480333D5288133E7003486EF /* pIcon.png in Resources */,
 				48C9417328801C3A00B9E577 /* HomeTableViewCell.xib in Resources */,
+				48C428E42882A20000298BA7 /* SeacrchCollectionViewCell.xib in Resources */,
+				48C428F52882A9FA00298BA7 /* SelectHallCollectionViewCell.xib in Resources */,
 				480333DC288133E7003486EF /* play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,16 +386,21 @@
 			files = (
 				480333EA2881487D003486EF /* SearchViewController.swift in Sources */,
 				48C9416C288002CD00B9E577 /* APIHelper.swift in Sources */,
+				48C428EC2882A9B600298BA7 /* SeatSelectDeatailsViewController.swift in Sources */,
 				48C94169287FFF4000B9E577 /* MovieObjectViewModel.swift in Sources */,
 				480333E228813791003486EF /* VideoTableCell.swift in Sources */,
 				48C94163287FF9AA00B9E577 /* APIManager.swift in Sources */,
+				48C428F42882A9FA00298BA7 /* SelectHallCollectionViewCell.swift in Sources */,
 				48C94166287FFF0B00B9E577 /* MovieObject.swift in Sources */,
+				48C428EA2882A9B600298BA7 /* SeatSelectionViewController.swift in Sources */,
 				480333E7288141B9003486EF /* GenresCollectionCell.swift in Sources */,
 				48C9417D28803E9100B9E577 /* MovieDetailObject.swift in Sources */,
 				480333DF28813461003486EF /* PlayerViewController.swift in Sources */,
 				48C94153287FDA5500B9E577 /* ViewController.swift in Sources */,
 				48C9417F28804F3300B9E577 /* MovieDetailViewModel.swift in Sources */,
+				48C428E32882A20000298BA7 /* SeacrchCollectionViewCell.swift in Sources */,
 				48C9417B2880380600B9E577 /* MovieDetailsVC.swift in Sources */,
+				48C428F32882A9FA00298BA7 /* SelectSeatDateCollectionViewCell.swift in Sources */,
 				48C9414F287FDA5500B9E577 /* AppDelegate.swift in Sources */,
 				48C9417228801C3A00B9E577 /* HomeTableViewCell.swift in Sources */,
 				480333ED2881543A003486EF /* SearchTableCell.swift in Sources */,

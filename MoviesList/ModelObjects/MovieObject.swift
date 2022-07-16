@@ -24,3 +24,9 @@ struct MovieObject: Codable {
 struct MovieResponseResult : Codable{
     let results : [MovieObject]?
 }
+
+struct Seats_Codable: Codable{
+    let hall: String?
+    let time: String?
+    let duration: String?
+}

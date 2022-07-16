@@ -106,7 +106,9 @@ class MovieDetailsVC: UIViewController {
     //************************************************//
 
     @IBAction func bookTicketAction(_ sender: Any) {
-        self.showErrorAlertWithError(errorMessage: "This module is under construction")
+        let vc = SeatSelectionViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        //self.showErrorAlertWithError(errorMessage: "This module is under construction")
     }
     //************************************************//
 

@@ -67,6 +67,7 @@ class ViewController: UIViewController{
 
     @objc func searchFunction(){
         let vcObject = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController
+        vcObject?.arrOfMoviesForCollectinView = self.arrOfMovies
         self.navigationController?.pushViewController(vcObject!, animated: true)
     }
 
